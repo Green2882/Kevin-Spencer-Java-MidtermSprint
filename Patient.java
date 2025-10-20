@@ -26,6 +26,17 @@ public class Patient extends Person {
         prescriptions.add(prescription);
     }
 
+    // Method to remove medications and prescriptions
+    public void removeMedication(Medication medication) {
+
+        medications.remove(medication);
+    }
+
+    public void removePrescription(Prescription prescription) {
+
+        prescriptions.remove(prescription);
+    }
+
     // Getters
     public ArrayList<Medication> getMedications() {
 
