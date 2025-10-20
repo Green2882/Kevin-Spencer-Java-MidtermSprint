@@ -57,4 +57,10 @@ public abstract class Person {
 
         this.phoneNumber = phoneNumber;
     }
+
+    // toString
+    public String toString() {
+
+        return ("ID: " + this.getID() + " , Name: " + this.getName() + " , Age: " + this.getAge() + " , Phone Number: " + this.getPhoneNumer());
+    }
 }
