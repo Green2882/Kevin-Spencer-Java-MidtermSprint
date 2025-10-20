@@ -16,4 +16,45 @@ public abstract class Person {
         this.phoneNumber = phoneNumber;
     }
 
+    // Getters
+    public String getID() {
+
+        return this.ID;
+    }
+
+    public String getName() {
+
+        return this.name;
+    }
+
+    public String getAge() {
+
+        return this.age;
+    }
+
+    public String getPhoneNumer() {
+
+        return this.phoneNumber;
+    }
+
+    // Setters
+    public void setID(String ID) {
+
+        this.ID = ID;
+    }
+
+    public void setName(String name) {
+
+        this.name = name;
+    }
+
+    public void setAge(String age) {
+
+        this.age = age;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+
+        this.phoneNumber = phoneNumber;
+    }
 }
