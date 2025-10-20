@@ -45,7 +45,7 @@ public class Medication {
         this.quantity = quantity;
     }
 
-    public String tosString() {
+    public String toString() {
         return "ID: " + ID + " Name: " + name + " Quantity: " + quantity + " Exp Date: " + expiryDate;
     }
 }
