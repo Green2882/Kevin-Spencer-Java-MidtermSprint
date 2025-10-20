@@ -14,4 +14,15 @@ public class Patient extends Person {
         this.medications = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
+
+    // Method to add medications and prescriptions
+    public void addMedication(Medication medication) {
+
+        medications.add(medication);
+    }
+
+    public void addPrescription(Prescription prescription) {
+
+        prescriptions.add(prescription);
+    }
 }
