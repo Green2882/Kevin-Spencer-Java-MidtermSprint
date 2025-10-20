@@ -25,4 +25,15 @@ public class Patient extends Person {
 
         prescriptions.add(prescription);
     }
+
+    // Getters
+    public ArrayList<Medication> getMedications() {
+
+        return medications;
+    }
+
+    public ArrayList<Prescription> getPrescriptions() {
+
+        return prescriptions;
+    }
 }
