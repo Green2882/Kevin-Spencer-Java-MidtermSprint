@@ -44,4 +44,8 @@ public class Medication {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public String tosString() {
+        return "ID: " + ID + " Name: " + name + " Quantity: " + quantity + " Exp Date: " + expiryDate;
+    }
 }
