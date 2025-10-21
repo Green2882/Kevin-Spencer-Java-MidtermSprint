@@ -16,10 +16,10 @@ public class Doctor extends Person {
     @Override
     public String toString() {
         return super.toString()
-                + ", Specialization: " + specialization 
+                + ", Specialization: " + specialization
                 + ", Patients: " + patients.size();
     }
-}
+
     // Method to add/get patients
     public void addPatient(Patient patient) {
         patients.add(patient);
