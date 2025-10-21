@@ -3,13 +3,13 @@ import java.time.LocalDate;
 
 public class Medication {
 
-    private int ID;
+    private String ID;
     private String name;
     private int dose;
     private int quantity;
     private LocalDate expiryDate;
 
-    Medication(int ID, String name, int dose, int quantity, LocalDate expiryDate) {
+    Medication(String ID, String name, int dose, int quantity, LocalDate expiryDate) {
         this.ID = ID;
         this.name = name;
         this.dose = dose;
@@ -21,7 +21,7 @@ public class Medication {
         return expiryDate;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
@@ -42,7 +42,7 @@ public class Medication {
         this.expiryDate = expiryDate;
     }
 
-    public void setID(int iD) {
+    public void setID(String iD) {
         ID = iD;
     }
 
