@@ -47,4 +47,12 @@ public class Patient extends Person {
 
         return prescriptions;
     }
+
+    // toString
+    @Override
+    public String toString() {
+        return super.toString()
+                + ", Medications: " + medications.size()
+                + ", Prescriptions: " + prescriptions.size();
+    }
 }
