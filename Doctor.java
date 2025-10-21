@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 public class Doctor extends Person {
@@ -6,9 +7,18 @@ public class Doctor extends Person {
     private String specialization;
     private ArrayList<Patient> patients;
 
-    Doctor(String ID, String name, String age, String phoneNumber, String specialization) {
+    public Doctor(String ID, String name, String age, String phoneNumber, String specialization) {
         super(ID, name, age, phoneNumber);
         this.specialization = specialization;
         this.patients = new ArrayList<>();
+    }
+
+    // Method to add/get patients
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+
+    public ArrayList<Patient> getPatients() {
+        return patients;
     }
 }
