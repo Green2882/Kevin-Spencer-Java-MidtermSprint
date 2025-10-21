@@ -122,4 +122,75 @@ public class MedicationSystem {
         }
 
     }
+
+    // Methods to edit/delete medications/patients/doctors
+    public void editDoctor(String doctorID, String newName, String newPhoneNumber, String newSpecialization) {
+
+        // When editing, any fields you do not want to change, just pass null for that field
+        for (Doctor d : doctors) {
+            if (d.getID().equals(doctorID)) {
+                if (newName != null) {
+                    d.setName(newName);
+                }
+                if (newPhoneNumber != null) {
+                    d.setPhoneNumber(newPhoneNumber);
+                }
+                if (newSpecialization != null) {
+                    d.setSpecialization(newSpecialization);
+                }
+                System.out.println("Doctor updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Doctor not found.");
+    }
+
+    public void editPatient(String patientID, String newName, String newPhoneNumber) {
+
+        for (Patient p : patients) {
+            if (p.getID().equals(patientID)) {
+                if (newName != null) {
+                    p.setName(newName);
+                }
+                if (newPhoneNumber != null) {
+                    p.setPhoneNumber(newPhoneNumber);
+                }
+                System.out.println("Patient updated successfully");
+                return;
+            }
+        }
+        System.out.println("Patient not found");
+    }
+
+    public void editMedication(String medicationID, String newName, Integer newDose, Integer newQuantity, LocalDate newExpiryDate) {
+
+        for (Medication m : medications) {
+            if (m.getID().equals(medicationID)) {
+                if (newName != null) {
+                    m.setName(newName);
+                }
+                if (newDose != null) {
+                    m.setDose(newDose);
+                }
+                if (newQuantity != null) {
+                    m.setQuantity(newQuantity);
+                }
+                if (newExpiryDate != null) {
+                    m.setExpiryDate(newExpiryDate);
+                }
+                System.out.println("Medication updated successfully");
+                return;
+            }
+        }
+        System.out.println("Medication not found");
+    }
+
+    public void deleteDoctor() {
+    }
+
+    public void deletePateint() {
+    }
+
+    public void deleteMedication() {
+    }
 }
