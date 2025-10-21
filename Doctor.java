@@ -11,4 +11,11 @@ public class Doctor extends Person {
         this.specialization = specialization;
         this.patients = new ArrayList<>();
     }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + ", Specialization: " + specialization 
+                + ", Patients: " + patients.size();
+    }
 }
