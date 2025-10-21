@@ -13,13 +13,6 @@ public class Doctor extends Person {
         this.patients = new ArrayList<>();
     }
 
-    @Override
-    public String toString() {
-        return super.toString()
-                + ", Specialization: " + specialization
-                + ", Patients: " + patients.size();
-    }
-
     // Method to add/get patients
     public void addPatient(Patient patient) {
         patients.add(patient);
@@ -28,4 +21,18 @@ public class Doctor extends Person {
     public ArrayList<Patient> getPatients() {
         return patients;
     }
+
+    // Method to setSpecialization
+    public void setSpecialization(String specialization) {
+
+        this.specialization = specialization;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()
+                + ", Specialization: " + specialization
+                + ", Patients: " + patients.size();
+    }
+
 }
