@@ -19,4 +19,40 @@ public class Prescription {
         this.medication = medication;
         this.prescriptionExp = prescriptionExp;
     }
+
+    // Getters
+    public int getID() {
+
+        return this.ID;
+    }
+
+    public Doctor getDoctor() {
+
+        return this.doctor;
+    }
+
+    public Patient getPatient() {
+
+        return this.patient;
+    }
+
+    public Medication getMedication() {
+
+        return this.medication;
+    }
+
+    public LocalDate getPrescriptionExp() {
+
+        return this.prescriptionExp;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "Prescription ID: " + ID
+                + ", Doctor: " + doctor.getName()
+                + ", Patient: " + patient.getName()
+                + ", Medication: " + medication.getName()
+                + ", Expires: " + prescriptionExp;
+    }
 }
