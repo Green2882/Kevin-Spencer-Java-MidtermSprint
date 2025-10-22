@@ -80,7 +80,7 @@ public class MedicationSystem {
     }
 
     // Method to accept a prescription
-    public void acceptPrescription(String doctorID, String patientID, String medicationID) {
+    public void acceptPrescription(String doctorID, String patientID, String medicationID, LocalDate prescribeDate) {
 
         Doctor doctor = null;
         Patient patient = null;
@@ -110,15 +110,16 @@ public class MedicationSystem {
         if (doctor != null && patient != null && medication != null) {
             String newPrescriptionID = String.valueOf(prescriptions.size() + 1);
 
-            Prescription prescription = new Prescription(newPrescriptionID, doctor, patient, medication, LocalDate.now().plusYears(1));
+            Prescription prescription
+                    = new Prescription(newPrescriptionID, doctor, patient, medication, prescribeDate);
 
             prescriptions.add(prescription);
             patient.addPrescription(prescription);
             patient.addMedication(medication);
 
-            System.out.println("Prescription added succesfully");
+            System.out.println("Prescription added successfully (" + prescribeDate + ")");
         } else {
-            System.out.println("Doctor, patient, or medication not found");
+            System.out.println("Doctor, patient, or medication not found.");
         }
 
     }
