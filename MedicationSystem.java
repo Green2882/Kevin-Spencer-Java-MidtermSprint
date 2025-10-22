@@ -185,12 +185,41 @@ public class MedicationSystem {
         System.out.println("Medication not found");
     }
 
-    public void deleteDoctor() {
+    public void deleteDoctor(String doctorID) {
+
+        for (Doctor d : doctors) {
+            if (d.getID().equals(doctorID)) {
+                doctors.remove(d);
+                System.out.println("Doctor removed successfully");
+                return;
+            }
+        }
+        System.out.println("Doctor not found");
     }
 
-    public void deletePateint() {
+    public void deletePateint(String patientID) {
+
+        for (Patient p : patients) {
+
+            if (p.getID().equals(patientID)) {
+                patients.remove(p);
+                System.out.println("Patient removed successfully");
+                return;
+            }
+        }
+        System.out.println("Patient not found");
     }
 
-    public void deleteMedication() {
+    public void deleteMedication(String medicationID) {
+
+        for (Medication m : medications) {
+            if (m.getID().equals(medicationID)) {
+                medications.remove(m);
+                System.out.println("Medication removed successfully");
+                return;
+            }
+        }
+        System.out.println("Medication not found");
     }
+
 }
