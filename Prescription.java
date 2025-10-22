@@ -8,16 +8,18 @@ public class Prescription {
     private Doctor doctor;
     private Patient patient;
     private Medication medication;
+    private LocalDate prescribeDate;
     private LocalDate prescriptionExp;
 
     // Constructor
-    public Prescription(String ID, Doctor doctor, Patient patient, Medication medication, LocalDate prescriptionExp) {
+    public Prescription(String ID, Doctor doctor, Patient patient, Medication medication, LocalDate prescribeDate) {
 
         this.ID = ID;
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
-        this.prescriptionExp = prescriptionExp;
+        this.prescribeDate = prescribeDate;
+        this.prescriptionExp = prescribeDate.plusYears(1);
     }
 
     // Getters
