@@ -19,7 +19,7 @@ public class Demo {
                 System.out.println("V) View patient details");
                 System.out.print("Choose an option: ");
                 String patientChoice = input.nextLine().toUpperCase();
-                
+
                 switch (patientChoice) {
                     case "A":
                         System.out.println("Adding new patient...");
@@ -42,7 +42,7 @@ public class Demo {
                         break;
                 }
                 break;
-                
+
             case "D":
                 System.out.println("\n--- Doctor Menu ---");
                 System.out.println("A) Add doctor");
@@ -51,7 +51,7 @@ public class Demo {
                 System.out.println("V) View doctor details");
                 System.out.print("Choose an option: ");
                 String doctorChoice = input.nextLine().toUpperCase();
-                
+
                 switch (doctorChoice) {
                     case "A":
                         System.out.println("Adding new doctor...");
@@ -74,7 +74,7 @@ public class Demo {
                         break;
                 }
                 break;
-                
+
             case "M":
                 System.out.println("\n--- Medication Menu ---");
                 System.out.println("S) Search by name");
@@ -82,7 +82,7 @@ public class Demo {
                 System.out.println("C) Search by category");
                 System.out.print("Choose search type: ");
                 String medicationChoice = input.nextLine().toUpperCase();
-                
+
                 switch (medicationChoice) {
                     case "S":
                         System.out.println("Searching medication by name...");
@@ -101,7 +101,7 @@ public class Demo {
                         break;
                 }
                 break;
-                
+
             case "S":
                 System.out.println("\n--- Prescription Menu ---");
                 System.out.println("P) Search by patient");
@@ -110,7 +110,7 @@ public class Demo {
                 System.out.println("A) View all prescriptions");
                 System.out.print("Choose search type: ");
                 String prescriptionChoice = input.nextLine().toUpperCase();
-                
+
                 switch (prescriptionChoice) {
                     case "P":
                         System.out.println("Searching prescriptions by patient...");
@@ -133,7 +133,7 @@ public class Demo {
                         break;
                 }
                 break;
-                
+
             default:
                 System.out.println("Error: Invalid input. Please try again");
                 break;
