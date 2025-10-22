@@ -10,12 +10,12 @@ public class Medication {
     private int quantity;
     private LocalDate expiryDate;
 
-    public Medication(String ID, String name, int dose, int quantity, LocalDate expiryDate) {
+    public Medication(String ID, String name, int dose, int quantity) {
         this.ID = ID;
         this.name = name;
         this.dose = dose;
         this.quantity = quantity;
-        this.expiryDate = getExpiryDate();
+        this.expiryDate = getRandomExpiryDate();
     }
 
     // Method to get a random expiry date
@@ -72,6 +72,6 @@ public class Medication {
 
     // toString
     public String toString() {
-        return "ID: " + ID + " Name: " + name + " Dose: " + dose + " Quantity: " + quantity + " Exp Date: " + expiryDate;
+        return "ID: " + ID + ", Name: " + name + ", Dose: " + dose + ", Quantity: " + quantity + ", Exp Date: " + expiryDate;
     }
 }

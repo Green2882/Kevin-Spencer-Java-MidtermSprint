@@ -248,6 +248,16 @@ public class MedicationSystem {
         for (Prescription p : prescriptions) {
             System.out.println(p);
         }
+    }
 
+    // Method to check for expired medications
+    public void checkMedicationExp() {
+
+        for (Medication m : medications) {
+            if (m.getExpiryDate().isBefore(LocalDate.now())) {
+                System.out.println(m.getID() + ", " + m.getName() + ", is expired");
+                return;
+            }
+        }
     }
 }
