@@ -80,7 +80,7 @@ public class MedicationSystem {
     }
 
     // Method to accept a prescription
-    public void acceptPrescription(String doctorID, String patientID, String medicationID) {
+    public void acceptPrescription(String doctorID, String patientID, String medicationID, LocalDate prescribeDate) {
 
         Doctor doctor = null;
         Patient patient = null;
@@ -110,15 +110,16 @@ public class MedicationSystem {
         if (doctor != null && patient != null && medication != null) {
             String newPrescriptionID = String.valueOf(prescriptions.size() + 1);
 
-            Prescription prescription = new Prescription(newPrescriptionID, doctor, patient, medication, LocalDate.now().plusYears(1));
+            Prescription prescription
+                    = new Prescription(newPrescriptionID, doctor, patient, medication, prescribeDate);
 
             prescriptions.add(prescription);
             patient.addPrescription(prescription);
             patient.addMedication(medication);
 
-            System.out.println("Prescription added succesfully");
+            System.out.println("Prescription added successfully (" + prescribeDate + ")");
         } else {
-            System.out.println("Doctor, patient, or medication not found");
+            System.out.println("Doctor, patient, or medication not found.");
         }
 
     }
@@ -185,12 +186,79 @@ public class MedicationSystem {
         System.out.println("Medication not found");
     }
 
-    public void deleteDoctor() {
+    public void deleteDoctor(String doctorID) {
+
+        for (Doctor d : doctors) {
+            if (d.getID().equals(doctorID)) {
+                doctors.remove(d);
+                System.out.println("Doctor removed successfully");
+                return;
+            }
+        }
+        System.out.println("Doctor not found");
     }
 
-    public void deletePateint() {
+    public void deletePateint(String patientID) {
+
+        for (Patient p : patients) {
+
+            if (p.getID().equals(patientID)) {
+                patients.remove(p);
+                System.out.println("Patient removed successfully");
+                return;
+            }
+        }
+        System.out.println("Patient not found");
     }
 
-    public void deleteMedication() {
+    public void deleteMedication(String medicationID) {
+
+        for (Medication m : medications) {
+            if (m.getID().equals(medicationID)) {
+                medications.remove(m);
+                System.out.println("Medication removed successfully");
+                return;
+            }
+        }
+        System.out.println("Medication not found");
+    }
+
+    // Method to print a report of all system data
+    public void generateSystemReport() {
+
+        System.out.println("System Report:");
+        System.out.println("Doctors:");
+        for (Doctor d : doctors) {
+            System.out.println(d);
+        }
+
+        System.out.println();
+        System.out.println("Medications:");
+        for (Medication m : medications) {
+            System.out.println(m);
+        }
+
+        System.out.println();
+        System.out.println("Patients");
+        for (Patient p : patients) {
+            System.out.println(p);
+        }
+
+        System.out.println();
+        System.out.println("Prescriptions:");
+        for (Prescription p : prescriptions) {
+            System.out.println(p);
+        }
+    }
+
+    // Method to check for expired medications
+    public void checkMedicationExp() {
+
+        for (Medication m : medications) {
+            if (m.getExpiryDate().isBefore(LocalDate.now())) {
+                System.out.println(m.getID() + ", " + m.getName() + ", is expired");
+                return;
+            }
+        }
     }
 }

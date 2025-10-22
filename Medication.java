@@ -1,5 +1,6 @@
 
 import java.time.LocalDate;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Medication {
 
@@ -9,14 +10,24 @@ public class Medication {
     private int quantity;
     private LocalDate expiryDate;
 
-    Medication(String ID, String name, int dose, int quantity, LocalDate expiryDate) {
+    public Medication(String ID, String name, int dose, int quantity) {
         this.ID = ID;
         this.name = name;
         this.dose = dose;
         this.quantity = quantity;
-        this.expiryDate = expiryDate;
+        this.expiryDate = getRandomExpiryDate();
     }
 
+    // Method to get a random expiry date
+    private LocalDate getRandomExpiryDate() {
+        long start = LocalDate.now().minusYears(3).toEpochDay();
+        long end = LocalDate.now().plusYears(5).toEpochDay();
+
+        long randomDay = ThreadLocalRandom.current().nextLong(start, end);
+        return LocalDate.ofEpochDay(randomDay);
+    }
+
+    // Getters/Setters
     public LocalDate getExpiryDate() {
         return expiryDate;
     }
@@ -59,7 +70,8 @@ public class Medication {
         this.quantity = quantity;
     }
 
+    // toString
     public String toString() {
-        return "ID: " + ID + " Name: " + name + " Dose: " + dose + " Quantity: " + quantity + " Exp Date: " + expiryDate;
+        return "ID: " + ID + ", Name: " + name + ", Dose: " + dose + ", Quantity: " + quantity + ", Exp Date: " + expiryDate;
     }
 }

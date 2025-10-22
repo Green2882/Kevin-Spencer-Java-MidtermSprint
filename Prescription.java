@@ -21,7 +21,7 @@ public class Prescription {
     }
 
     // Getters
-    public int getID() {
+    public String getID() {
 
         return this.ID;
     }
