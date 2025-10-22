@@ -222,4 +222,32 @@ public class MedicationSystem {
         System.out.println("Medication not found");
     }
 
+    // Method to print a report of all system data
+    public void generateSystemReport() {
+
+        System.out.println("System Report:");
+        System.out.println("Doctors:");
+        for (Doctor d : doctors) {
+            System.out.println(d);
+        }
+
+        System.out.println();
+        System.out.println("Medications:");
+        for (Medication m : medications) {
+            System.out.println(m);
+        }
+
+        System.out.println();
+        System.out.println("Patients");
+        for (Patient p : patients) {
+            System.out.println(p);
+        }
+
+        System.out.println();
+        System.out.println("Prescriptions:");
+        for (Prescription p : prescriptions) {
+            System.out.println(p);
+        }
+
+    }
 }
