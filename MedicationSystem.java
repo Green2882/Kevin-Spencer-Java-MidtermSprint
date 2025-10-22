@@ -323,4 +323,39 @@ public class MedicationSystem {
 
         System.out.println("Patient not found in the system.");
     }
+
+    // Method to print all patients' prescriptions from the past year
+    public void printPastYearsPrescriptions() {
+        LocalDate oneYearAgo = LocalDate.now().minusYears(1);
+        boolean anyFound = false;
+
+        for (Patient p : patients) {
+            boolean patientHasRecent = false;
+
+            for (Prescription pr : prescriptions) {
+                if (pr.getPatient().getID().equals(p.getID())
+                        && pr.getPrescribeDate().isAfter(oneYearAgo)) {
+
+                    if (!patientHasRecent) {
+                        System.out.println("\nPatient: " + p.getName());
+                        System.out.println("Prescriptions in the last year:");
+                        patientHasRecent = true;
+                        anyFound = true;
+                    }
+
+                    System.out.println("- " + pr.getMedication().getName()
+                            + " (Prescribed on: " + pr.getPrescribeDate() + ")");
+                }
+            }
+
+            if (patientHasRecent) {
+                System.out.println();
+            }
+        }
+
+        if (!anyFound) {
+            System.out.println("No prescriptions found from the past year.");
+        }
+    }
+
 }
