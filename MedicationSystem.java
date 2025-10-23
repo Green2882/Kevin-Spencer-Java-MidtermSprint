@@ -124,7 +124,7 @@ public class MedicationSystem {
 
     }
 
-    // Methods to edit/delete medications/patients/doctors
+    // Methods to edit/ medications/patients/doctors
     public void editDoctor(String doctorID, String newName, String newPhoneNumber, String newSpecialization) {
 
         // When editing, any fields you do not want to change, just pass null for that field
@@ -186,43 +186,6 @@ public class MedicationSystem {
         System.out.println("Medication not found");
     }
 
-    public void deleteDoctor(String doctorID) {
-
-        for (Doctor d : doctors) {
-            if (d.getID().equals(doctorID)) {
-                doctors.remove(d);
-                System.out.println("Doctor removed successfully");
-                return;
-            }
-        }
-        System.out.println("Doctor not found");
-    }
-
-    public void deletePateint(String patientID) {
-
-        for (Patient p : patients) {
-
-            if (p.getID().equals(patientID)) {
-                patients.remove(p);
-                System.out.println("Patient removed successfully");
-                return;
-            }
-        }
-        System.out.println("Patient not found");
-    }
-
-    public void deleteMedication(String medicationID) {
-
-        for (Medication m : medications) {
-            if (m.getID().equals(medicationID)) {
-                medications.remove(m);
-                System.out.println("Medication removed successfully");
-                return;
-            }
-        }
-        System.out.println("Medication not found");
-    }
-
     // Method to print a report of all system data
     public void generateSystemReport() {
 
@@ -257,7 +220,6 @@ public class MedicationSystem {
         for (Medication m : medications) {
             if (m.getExpiryDate().isBefore(LocalDate.now())) {
                 System.out.println(m.getID() + ", " + m.getName() + ", is expired");
-                return;
             }
         }
     }
@@ -309,7 +271,7 @@ public class MedicationSystem {
                 for (Prescription pr : prescriptions) {
                     if (pr.getPatient().getName().equalsIgnoreCase(patientName)) {
                         System.out.println("- " + pr.getMedication().getName()
-                                + " (Prescribed by Dr. " + pr.getDoctor().getName() + ")");
+                                + " (Prescribed by " + pr.getDoctor().getName() + ")");
                         found = true;
                     }
                 }
@@ -356,6 +318,49 @@ public class MedicationSystem {
         if (!anyFound) {
             System.out.println("No prescriptions found from the past year.");
         }
+    }
+
+    // Method to search doctor, medication, patient by name
+    public String searchPatientByName(String name) {
+
+        for (Patient p : patients) {
+            if (p.getName().equalsIgnoreCase(name)) {
+                return p.toString();
+            }
+        }
+        System.out.println("Patient not found");
+        return null;
+    }
+
+    public String searchDoctorByName(String name) {
+
+        for (Doctor d : doctors) {
+            if (d.getName().equalsIgnoreCase(name)) {
+                return d.toString();
+            }
+        }
+        System.out.println("Doctor not found");
+        return null;
+    }
+
+    public String searchMedicationByName(String name) {
+
+        for (Medication m : medications) {
+            if (m.getName().equalsIgnoreCase(name)) {
+                return m.toString();
+            }
+        }
+        System.out.println("Medication not found");
+        return null;
+    }
+
+    // Methods to get list of doctors and patients
+    public ArrayList<Patient> getPatients() {
+        return patients;
+    }
+
+    public ArrayList<Doctor> getDoctors() {
+        return doctors;
     }
 
 }
