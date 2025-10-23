@@ -4,12 +4,14 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Medication {
 
+    // Instance variables
     private String ID;
     private String name;
     private int dose;
     private int quantity;
     private LocalDate expiryDate;
 
+    // Constructor
     public Medication(String ID, String name, int dose, int quantity) {
         this.ID = ID;
         this.name = name;
@@ -71,6 +73,7 @@ public class Medication {
     }
 
     // toString
+    @Override
     public String toString() {
         return "ID: " + ID + ", Name: " + name + ", Dose: " + dose + ", Quantity: " + quantity + ", Exp Date: " + expiryDate;
     }
