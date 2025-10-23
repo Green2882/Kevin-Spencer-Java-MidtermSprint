@@ -156,6 +156,7 @@ public class Demo {
                 case "D":
                     System.out.println("\n--- Doctor Menu ---");
                     System.out.println("A) Add doctor");
+                    System.out.println("E) Edit doctor");
                     System.out.println("P) Print doctor prescriptions");
                     System.out.println("S) Search a doctor by name");
                     System.out.print("Choose option: ");
@@ -175,6 +176,31 @@ public class Demo {
                             Doctor d = new Doctor(docID, docName, docAge, docPhone, specialization);
                             system.addDoctor(d);
                             System.out.println("Doctor added successfully.");
+                            break;
+
+                        case "E":
+                            System.out.print("Enter doctor ID to edit: ");
+                            String editID = input.nextLine();
+
+                            System.out.print("Enter new name (or press Enter to skip): ");
+                            String newName = input.nextLine();
+                            if (newName.isBlank()) {
+                                newName = null;
+                            }
+
+                            System.out.print("Enter new phone number (or press Enter to skip): ");
+                            String newPhone = input.nextLine();
+                            if (newPhone.isBlank()) {
+                                newPhone = null;
+                            }
+
+                            System.out.print("Enter new specialization (or press Enter to skip): ");
+                            String newSpecialization = input.nextLine();
+                            if (newSpecialization.isBlank()) {
+                                newSpecialization = null;
+                            }
+
+                            system.editDoctor(editID, newName, newPhone, newSpecialization);
                             break;
 
                         case "P":
