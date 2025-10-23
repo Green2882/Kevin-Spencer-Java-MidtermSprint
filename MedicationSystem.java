@@ -80,7 +80,7 @@ public class MedicationSystem {
     }
 
     // Method to accept a prescription
-    public void acceptPrescription(String doctorID, String patientID, String medicationID, LocalDate prescribeDate) {
+    public void acceptPrescription(String doctorID, String patientID, String medicationID) {
 
         Doctor doctor = null;
         Patient patient = null;
@@ -110,21 +110,20 @@ public class MedicationSystem {
         if (doctor != null && patient != null && medication != null) {
             String newPrescriptionID = String.valueOf(prescriptions.size() + 1);
 
-            Prescription prescription
-                    = new Prescription(newPrescriptionID, doctor, patient, medication, prescribeDate);
+            Prescription prescription = new Prescription(newPrescriptionID, doctor, patient, medication, LocalDate.now().plusYears(1));
 
             prescriptions.add(prescription);
             patient.addPrescription(prescription);
             patient.addMedication(medication);
 
-            System.out.println("Prescription added successfully (" + prescribeDate + ")");
+            System.out.println("Prescription added succesfully");
         } else {
-            System.out.println("Doctor, patient, or medication not found.");
+            System.out.println("Doctor, patient, or medication not found");
         }
 
     }
 
-    // Methods to edit/ medications/patients/doctors
+    // Methods to edit/delete medications/patients/doctors
     public void editDoctor(String doctorID, String newName, String newPhoneNumber, String newSpecialization) {
 
         // When editing, any fields you do not want to change, just pass null for that field
@@ -186,181 +185,12 @@ public class MedicationSystem {
         System.out.println("Medication not found");
     }
 
-    // Method to print a report of all system data
-    public void generateSystemReport() {
-
-        System.out.println("System Report:");
-        System.out.println("Doctors:");
-        for (Doctor d : doctors) {
-            System.out.println(d);
-        }
-
-        System.out.println();
-        System.out.println("Medications:");
-        for (Medication m : medications) {
-            System.out.println(m);
-        }
-
-        System.out.println();
-        System.out.println("Patients");
-        for (Patient p : patients) {
-            System.out.println(p);
-        }
-
-        System.out.println();
-        System.out.println("Prescriptions:");
-        for (Prescription p : prescriptions) {
-            System.out.println(p);
-        }
+    public void deleteDoctor() {
     }
 
-    // Method to check for expired medications
-    public void checkMedicationExp() {
-
-        for (Medication m : medications) {
-            if (m.getExpiryDate().isBefore(LocalDate.now())) {
-                System.out.println(m.getID() + ", " + m.getName() + ", is expired");
-            }
-        }
+    public void deletePateint() {
     }
 
-    // Method to print all prescriptions given by a certain doctor
-    public void printDoctorPrescriptions(String doctorID) {
-
-        boolean found = false;
-
-        for (Doctor d : doctors) {
-            if (d.getID().equals(doctorID)) {
-                System.out.println("Prescriptions issued by Dr. " + d.getName() + ":");
-
-                for (Prescription pr : prescriptions) {
-                    if (pr.getDoctor().getID().equals(doctorID)) {
-                        System.out.println(pr);
-                        found = true;
-                    }
-                }
-
-                if (!found) {
-                    System.out.println("No prescriptions found for this doctor.");
-                }
-                return;
-            }
-        }
-        System.out.println("Doctor not found in the system.");
+    public void deleteMedication() {
     }
-
-    // Method to restock medications in pharmacy
-    public void restockMeds() {
-
-        for (Medication m : medications) {
-            m.setQuantity(m.getQuantity() + 10);
-        }
-        System.out.println("All medications have been restocked");
-    }
-
-    // Method to search a patients medications and doctors
-    public void printPatientMedsDoctor(String patientName) {
-
-        for (Patient p : patients) {
-            if (p.getName().equalsIgnoreCase(patientName)) {
-                System.out.println("Patient: " + p.getName());
-                System.out.println("Medications and Prescribing Doctors:");
-
-                boolean found = false;
-
-                for (Prescription pr : prescriptions) {
-                    if (pr.getPatient().getName().equalsIgnoreCase(patientName)) {
-                        System.out.println("- " + pr.getMedication().getName()
-                                + " (Prescribed by " + pr.getDoctor().getName() + ")");
-                        found = true;
-                    }
-                }
-
-                if (!found) {
-                    System.out.println("No prescriptions found for this patient.");
-                }
-                return;
-            }
-        }
-
-        System.out.println("Patient not found in the system.");
-    }
-
-    // Method to print all patients' prescriptions from the past year
-    public void printPastYearsPrescriptions() {
-        LocalDate oneYearAgo = LocalDate.now().minusYears(1);
-        boolean anyFound = false;
-
-        for (Patient p : patients) {
-            boolean patientHasRecent = false;
-
-            for (Prescription pr : prescriptions) {
-                if (pr.getPatient().getID().equals(p.getID())
-                        && pr.getPrescribeDate().isAfter(oneYearAgo)) {
-
-                    if (!patientHasRecent) {
-                        System.out.println("\nPatient: " + p.getName());
-                        System.out.println("Prescriptions in the last year:");
-                        patientHasRecent = true;
-                        anyFound = true;
-                    }
-
-                    System.out.println("- " + pr.getMedication().getName()
-                            + " (Prescribed on: " + pr.getPrescribeDate() + ")");
-                }
-            }
-
-            if (patientHasRecent) {
-                System.out.println();
-            }
-        }
-
-        if (!anyFound) {
-            System.out.println("No prescriptions found from the past year.");
-        }
-    }
-
-    // Method to search doctor, medication, patient by name
-    public String searchPatientByName(String name) {
-
-        for (Patient p : patients) {
-            if (p.getName().equalsIgnoreCase(name)) {
-                return p.toString();
-            }
-        }
-        System.out.println("Patient not found");
-        return null;
-    }
-
-    public String searchDoctorByName(String name) {
-
-        for (Doctor d : doctors) {
-            if (d.getName().equalsIgnoreCase(name)) {
-                return d.toString();
-            }
-        }
-        System.out.println("Doctor not found");
-        return null;
-    }
-
-    public String searchMedicationByName(String name) {
-
-        for (Medication m : medications) {
-            if (m.getName().equalsIgnoreCase(name)) {
-                return m.toString();
-            }
-        }
-        System.out.println("Medication not found");
-        return null;
-    }
-
-    // Methods to get list of doctors and patients
-    public ArrayList<Patient> getPatients() {
-        return patients;
-    }
-
-    public ArrayList<Doctor> getDoctors() {
-        return doctors;
-    }
-
 }
