@@ -193,7 +193,7 @@ public class Demo {
                             System.out.println("Invalid option.");
                     }
                     break;
-// ================= MEDICATION MENU =================
+                // ================= MEDICATION MENU =================
                 case "M":
                     System.out.println("\n--- Medication Menu ---");
                     System.out.println("A) Add new medication");
